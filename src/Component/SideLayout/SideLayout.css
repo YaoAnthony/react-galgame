@@ -1,0 +1,11 @@
+/* 侧边栏整体样式 */
+.sidebar {
+    width: 320px; /* w-80 对应 320px */
+    background-color: #222222;
+    padding: 16px; /* p-4 对应 16px */
+}
+
+/* 侧边栏文本样式 */
+.sidebar-content {
+    color: white;
+}

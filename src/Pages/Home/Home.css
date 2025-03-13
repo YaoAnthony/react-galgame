@@ -1,0 +1,29 @@
+/* 页面整体布局 */
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* 侧边栏 */
+.sidebar {
+    width: 250px;
+    background-color: #1a1a1a;
+    color: white;
+    padding: 16px;
+}
+
+/* 内容区域 */
+.main-content {
+    flex: 1;
+    padding: 50px 200px;
+    background-color: #111111;
+}
+
+.content-box {
+    padding: 16px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+}
