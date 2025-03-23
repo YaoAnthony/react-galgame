@@ -49,6 +49,17 @@ const SideLayout = () => {
     return (
         <aside className="sidebar">
             <div className="sidebar-content">
+                <div
+                    style={{
+                        display: 'flex',
+                        width: '100%',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        padding: '10px',
+                    }}
+                >
+                    <h2>《病娇圣女与奴隶骑士》</h2>
+                </div>
                 {
                     Object.values(characters).map((char) => (
                         <motion.div 

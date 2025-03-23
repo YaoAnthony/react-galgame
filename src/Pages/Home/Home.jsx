@@ -10,6 +10,9 @@ import Story from '../../Component/Story';
 // 背包组件
 import InventoryModal from '../../Component/Inventory';
 
+// 玩家组件
+import PlayerModal from '../../Component/PlayerModal/PlayerModal';
+
 
 const Home = () => {
     return (
@@ -23,6 +26,7 @@ const Home = () => {
             </main>
 
             <InventoryModal />
+            <PlayerModal />
         </div>
     );
 };

@@ -7,12 +7,22 @@ import { Avatar } from 'antd';
 // ui
 import { question } from "../../../Assets";
 
+// redux
+import { useDispatch } from 'react-redux';
+
+// 成就系统
+import { unlockAchievement } from "../../../Store/PlayerSlice";
+
 const Scene1 = (props) => {
+
+    const dispatch = useDispatch();
+
     const { content, choices, handleChoice, changeScene, containerRef } = props;
 
     const choiceOption = (choice) => {
         console.log('handleChoice', choice);
         if (choice.next === 'jump1') {
+            dispatch(unlockAchievement('achieve_1'));
             changeScene(2);
             return;
         }else if(choice.next === 'jump2'){
