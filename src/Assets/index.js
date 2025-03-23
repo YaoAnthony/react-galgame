@@ -10,6 +10,10 @@ import desert from "./Background/002Desert.jpg"
 import afl from "./Character/Afl.jpg"
 import kos from "./Character/Kos.jpg"
 
+//ui
+import question from "./ui/square_question.png"
+import bag from "./ui/bag.png"
+
 
 //导出
 export {
@@ -20,7 +24,11 @@ export {
     end1,
 
     afl,
-    kos
+    kos,
+
+
+    question,
+    bag
 }
 
 

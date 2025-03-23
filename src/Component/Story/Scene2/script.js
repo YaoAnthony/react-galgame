@@ -1,6 +1,5 @@
 import { 
     desert,
-
     afl,
     kos
 } from "../../../Assets";
@@ -45,7 +44,8 @@ const script = {
                 value: kos
             },
             {
-                type: 'text',
+                type: 'dialog',
+                img: null,
                 value: "“你好。”"
             },
             {
@@ -56,10 +56,12 @@ const script = {
 
         choices: [
             {
+                type: 'text',
                 text: "回头看看",
                 next: "scene1"
             },
             {
+                type: 'text',
                 text: "向前走",
                 next: "scene2"
             }
@@ -89,7 +91,8 @@ const script = {
                 value: "她微微一笑，金色的眼眸中似乎有着无尽的温柔。"
             },
             {
-                type: 'text',
+                type: 'dialog',
+                img: kos,
                 value: "“你是谁？” 你低声问。"
             },
             {
@@ -97,16 +100,23 @@ const script = {
                 value: "她轻轻地摇了摇头，嘴角仍然带着微笑。"
             },
             {
-                type: 'text',
+                type: 'dialog',
+                
+                name: "afl",
+                affection: 6,
+                img: afl,
                 value: "“我来带你回家。”"
             }
         ],
+
         choices: [
             {
+                type: 'text',
                 text: "跟随她",
                 next: "scene3"
             },
             {
+                type: 'text',
                 text: "拒绝她",
                 next: "scene4"
             }
@@ -124,7 +134,8 @@ const script = {
                 value: "烈日炙烤着你的皮肤，汗水顺着额角滑落，蒸发在灼热的空气中。"
             },
             {
-                type: 'text',
+                type: 'dialog',
+                img: null,
                 value: "“你要去哪里？” 那道声音再次响起。"
             },
             {
@@ -132,7 +143,8 @@ const script = {
                 value: "你猛地停下脚步，环顾四周——空无一人。"
             },
             {
-                type: 'text',
+                type: 'dialog',
+                img: null,
                 value: "“你是谁？” 你低声问道。"
             },
             {
@@ -140,18 +152,20 @@ const script = {
                 value: "没有回应，只有风沙在耳边呼啸。"
             }
         ],
+
         choices: [
             {
+                type: 'text',
                 text: "继续前行",
                 next: "scene5"
             },
             {
+                type: 'text',
                 text: "返回去寻找声音的来源",
                 next: "scene1"
             }
         ]
     },
-
     scene3: {
         content: [
             {
@@ -159,28 +173,29 @@ const script = {
                 value: "你跟在她的身后，白色的长袍在风中飘扬。"
             },
             {
-                type: 'text',
-                value: "她的步伐轻盈而坚定，你无法看清她的脸庞。"
+                type: 'dialog',
+                img: kos,
+                value: "“我们去哪？”"
             },
             {
-                type: 'text',
-                value: "“我们去哪？” 你忍不住问。"
-            },
-            {
-                type: 'text',
-                value: "“回家。” 她的声音依旧温柔。"
+                type: 'dialog',
+                img: afl,
+                value: "“回家。”"
             },
             {
                 type: 'text',
                 value: "你心中一阵恍惚。"
             }
         ],
+
         choices: [
             {
+                type: 'text',
                 text: "相信她，继续跟随",
                 next: "scene6"
             },
             {
+                type: 'text',
                 text: "停下来，质问她",
                 next: "scene7"
             }
@@ -194,24 +209,29 @@ const script = {
                 value: "你退后了一步，警惕地看着她。"
             },
             {
-                type: 'text',
-                value: "“我不认识你。” 你低声说。"
+                type: 'dialog',
+                img: kos,
+                value: "“我不认识你。”"
             },
             {
                 type: 'text',
                 value: "她的眼中闪过一丝失望，但很快又平静下来。"
             },
             {
-                type: 'text',
-                value: "“那我只好等你了。” 她微微一笑，身影渐渐淡去。"
+                type: 'dialog',
+                img: afl,
+                value: "“那我只好等你了。”"
             }
         ],
+
         choices: [
             {
+                type: 'text',
                 text: "试图跟上她",
                 next: "scene3"
             },
             {
+                type: 'text',
                 text: "转身离开",
                 next: "scene5"
             }
@@ -225,16 +245,20 @@ const script = {
                 value: "你继续行走，烈日下，你的影子被拉得很长。"
             },
             {
-                type: 'text',
-                value: "“你一定会回来的。” 她的声音在耳边响起。"
+                type: 'dialog',
+                img: afl,
+                value: "“你一定会回来的。”"
             }
         ],
+
         choices: [
             {
+                type: 'text',
                 text: "回头",
                 next: "scene1"
             },
             {
+                type: 'text',
                 text: "继续前行",
                 next: "scene6"
             }
@@ -252,16 +276,20 @@ const script = {
                 value: "前方的沙漠中，出现了一座模糊的宫殿。"
             },
             {
-                type: 'text',
-                value: "“欢迎回来。” 她的声音在你耳边响起。"
+                type: 'dialog',
+                img: afl,
+                value: "“欢迎回来。”"
             }
         ],
+
         choices: [
             {
+                type: 'text',
                 text: "走向宫殿",
                 next: "scene8"
             },
             {
+                type: 'text',
                 text: "停下来，回头看她",
                 next: "scene7"
             }
@@ -269,8 +297,4 @@ const script = {
     }
 };
 
-
-
-  
 export default script;
-  

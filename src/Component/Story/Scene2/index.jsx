@@ -1,6 +1,11 @@
 //HOC
 import withSceneLogic from "../withSceneLogic";
 
+// antd
+import { Avatar } from 'antd';
+
+// ui
+import { question } from "../../../Assets";
 const Scene = (props) => {
     const { content, choices, handleChoice, changeScene, containerRef } = props;
 
@@ -50,6 +55,26 @@ const Scene = (props) => {
                                 }}
                             />
                         );
+                        case 'dialog':
+                            return (
+                                <div key={index} style={{
+                                    margin: '40px 0',
+                                    whiteSpace: 'pre-wrap',
+                                    fontSize: '18px',
+                                    lineHeight: '1.5',
+                                    display: 'flex',
+                                    alignContent: 'center',
+                                    gap: '10px'
+                                }}>
+                                    <Avatar src={item.img === null ? question : item.img} size={40} />
+                                    <p
+                                        style={{
+                                            padding: '5px 0 ',
+                                            flex: 1
+                                        }}
+                                    >{item.value}</p>
+                                </div>
+                            );
                     default:
                         return null;
                 }

@@ -1,5 +1,7 @@
 import { 
-    scene1BG
+    scene1BG,
+    afl,
+    kos
 } from "../../../Assets";
 
 const script = {
@@ -14,13 +16,16 @@ const script = {
                 value: "黑暗之中有一道尖锐刻薄的古怪声音吵醒了你"
             },
             {
-                type: 'text',
+                type: 'dialog',
+                img : null,
                 value: "“早上好，骑士阁下。”",
             },
         ],
 
         choices: [
             {
+                type: 'dialog',
+                img : kos,
                 text: "早上好?",
                 next: "path1"
             }
@@ -30,13 +35,16 @@ const script = {
     path1 : {
         content : [
             {
-                type: 'text',
+                type: 'dialog',
+                img : null,
                 value: "“你似乎没睡醒？”"
             },
         ],
 
         choices: [
             {
+                type: 'dialog',
+                img : kos,
                 text: "你是谁？",
                 next: "path2"
             }
@@ -46,13 +54,16 @@ const script = {
     path2 : {
         content : [
             {
-                type: 'text',
+                type: 'dialog',
+                img : null,
                 value: "“你不觉得这一点儿也不重要吗？骑士阁下。”"
             },
         ],
 
         choices: [
             {
+                type: 'dialog',
+                img : kos,
                 text: "为什么这么说？",
                 next: "path3"
             }
@@ -62,17 +73,21 @@ const script = {
     path3 : {
         content : [
             {
-                type: 'text',
+                type: 'dialog',
+                img : null,
                 value: "“总之这并不重要，现在赶紧****（炼狱粗口）听好了，你已经死了！但是你有一个绝对重要的任务还没有完成，所以我***"
             },
             {
-                type: 'text',
+                type: 'dialog',
+                img : null,
                 value: "“（炼狱粗口）还不能让你死得那么轻松，懂吗。”"
             },
         ],
 
         choices: [
             {
+                type: 'dialog',
+                img : kos,
                 text: "“任务？”",
                 next: "path4"
             }
@@ -82,13 +97,16 @@ const script = {
     path4 : {
         content : [
             {
-                type: 'text',
+                type: 'dialog',
+                img : null,
                 value: "“桀桀桀，没错。****（炼狱粗口）超超超超超级难的终极死亡挑战任务！”"
             },
         ],
 
         choices: [
             {
+                type: 'dialog',
+                img : kos,
                 text: "“那是什么？”",
                 next: "path5"
             }
@@ -98,11 +116,13 @@ const script = {
     path5 : {
         content : [
             {
-                type: 'text',
+                type: 'dialog',
+                img : null,
                 value: "“自己睁开眼看吧！傻*(l炼狱粗口)孩子，还有什么比一场甜甜的恋爱还要****（炼狱粗口）死亡的呢。”"
             },
             {
-                type: 'text',
+                type: 'dialog',
+                img : null,
                 value: "荒诞的声音渐渐消失。"
             },
         ],

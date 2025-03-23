@@ -1,5 +1,13 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 
+// 🔹 导入图片
+import { kos } from '../../../Assets';
+
+
+//redux
+import { useDispatch, useSelector } from 'react-redux';
+import { addCharacter, updateAffection, updateAvatar } from '../../../Store/charactersSlice';
+
 const withSceneLogic = (WrappedComponent) => {
     /**
      * 这个代码是一个高阶组件，用于处理通用场景逻辑，帮助我们省了很多SCENE重复代码
@@ -10,6 +18,10 @@ const withSceneLogic = (WrappedComponent) => {
      */
 
     return (props) => {
+
+        // 🔹 Redux 的 dispatc
+        const dispatch = useDispatch();
+
 
         // 🔹 从 props 中解构出 故事流程a
         const { storyData, changeScene } = props;
@@ -23,6 +35,47 @@ const withSceneLogic = (WrappedComponent) => {
         const containerRef = useRef(null);
         // 🔹 用 Set 来存储已显示的内容，防止重复追加
         const seenTexts = useRef(new Set());
+        
+
+        // 🔹 Redux 中当前的角色
+        const characters = useSelector((state) => state.characters.characters);
+
+        /**
+         * 🌟 处理好感度和角色信息
+         */
+        const handleDialog = (item) => {
+            if (item.type === 'dialog' && item.name) {
+                const { name, img, affection } = item;
+
+                // 名字都没有，就不处理了
+                if (typeof name !== 'string') {
+                    return;
+                }
+        
+                // ✅ 如果角色不存在于 Redux 中，添加角色
+                if (!characters[name]) {
+                    dispatch(
+                        addCharacter({
+                            id: name, // 用角色名字作为 ID
+                            name,
+                            affection: 5, // 默认好感度为 5（中间值）
+                            avatar: img || null,
+                        })
+                    );
+                }
+    
+                // ✅ 如果有头像（img）字段，更新头像
+                if (img) {
+                    dispatch(updateAvatar({ id: name, avatar: img }));
+                }
+        
+                // ✅ 如果有好感度（affection）字段，更新好感度
+                if (typeof affection === 'number') {
+                    dispatch(updateAffection({ id: name, amount: affection }));
+                }
+            }
+        };
+
 
          /**
          * 🌟 使用 useCallback 让 loadScene 稳定
@@ -37,6 +90,12 @@ const withSceneLogic = (WrappedComponent) => {
                 const key = `${id}_${item.type}_${item.value}`;
                 if (!seenTexts.current.has(key)) {
                     seenTexts.current.add(key);
+
+                    // ✅ 如果是对话，处理角色逻辑
+                    if (item.type === 'dialog') {
+                        handleDialog(item);
+                    }
+              
                     setContent(prev => [...prev, item]);
                 }
             });
@@ -44,6 +103,8 @@ const withSceneLogic = (WrappedComponent) => {
             // ✅ 更新选项
             setChoices(scene.choices || []);
         }, [storyData]); // ✅ 只有 storyData 变化时才会更新 loadScene
+
+
         /**
          * 🌟 useEffect 监听场景 ID 变化
          * ✅ loadScene 已被 useCallback 包装，所以不会每次都触发
@@ -76,7 +137,6 @@ const withSceneLogic = (WrappedComponent) => {
          * @param {Object} choice - 选择的对象，包含文本和下一句话的id
          */
         const handleChoice = useCallback((choice) => {
-            console.log('handleChoice', choice);
             if (!seenTexts.current.has(`“${choice.text}”—你`)) {
 
                 // 处理Continue的情况，一般是直接下一个场景，跳过就行
@@ -87,11 +147,14 @@ const withSceneLogic = (WrappedComponent) => {
                     return;
                 }
     
-    
-    
                 seenTexts.current.add(`“${choice.text}”—你`);
-                setContent(prev => [...prev, { type: 'text', value: `“${choice.text}”—你` }]);
-                // ✅ 切换到下一个场景
+
+                if (choice.type === 'dialog') {
+                    setContent(prev => [...prev, { type: 'dialog', img : kos, value: `“${choice.text}”` }]);
+                }else{
+                    setContent(prev => [...prev, { type: 'text', value: `“${choice.text}”` }]);
+                }
+                    // ✅ 切换到下一个场景
                 setSceneId(choice.next);
             }
         });

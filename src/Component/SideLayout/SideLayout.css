@@ -8,4 +8,5 @@
 /* 侧边栏文本样式 */
 .sidebar-content {
     color: white;
+    position: fixed;
 }

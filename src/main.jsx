@@ -8,8 +8,14 @@ import './index.css' //导入全局css, 如果你有什么全局的css，可以�
 
 import App from './App.jsx' // 这将带你转到页面控制器
 
+//redux
+import { Provider } from 'react-redux'; // 引入 Redux 的 Provider
+import store from './Store'; // 引入我们的 Redux store
+
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
+    <StrictMode>
+        <Provider store={store}>
+            <App />
+        </Provider>
+    </StrictMode>,
 )

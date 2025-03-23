@@ -7,6 +7,9 @@ import SideLayout from '../../Component/SideLayout';
 // 这里我引用了一个故事的组件
 import Story from '../../Component/Story';
 
+// 背包组件
+import InventoryModal from '../../Component/Inventory';
+
 
 const Home = () => {
     return (
@@ -18,6 +21,8 @@ const Home = () => {
             <main className="main-content">
                 <Story />
             </main>
+
+            <InventoryModal />
         </div>
     );
 };
